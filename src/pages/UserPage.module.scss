@@ -1,0 +1,78 @@
+.UserPage {
+
+  .card {
+    padding: 1rem;
+    background-color: var(--sub-bg-color);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    position: relative;
+    margin-bottom: 1rem;
+    align-items: center;
+
+    .username {
+      margin: 0;
+      flex: 1;
+      white-space: wrap;
+      word-break: break-word;
+    }
+
+    .created {
+      font-size: 90%;
+    }
+
+    .about {
+      border-top: 0.1rem solid var(--bg-color);
+      padding: 0.5rem 0 0;
+      flex-basis: 100%;
+      white-space: pre;
+      align-self: stretch;
+
+      &:empty { display: none; }
+    }
+  }
+
+  .tabs {
+    display: flex;
+  }
+
+  @media screen and (max-width: 600px) {
+    .card {
+      flex-direction: column;
+    }
+    .tabs { justify-content: space-between; }
+  }
+
+  .note {
+    font-size: 75%;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    text-align: center;
+    display: block;
+  }
+
+  .empty {
+    text-align: center;
+    padding-top: 2rem;
+
+    a {
+      justify-self: center;
+    }
+  }
+
+  .quizList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+  }
+
+  .resultList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem
+  }
+}
+

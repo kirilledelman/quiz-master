@@ -1,0 +1,48 @@
+{
+  "index": 5,
+  "entries": {
+    "1": {
+      "id": 1,
+      "created": 1744214349548,
+      "active": 1744226394957,
+      "username": "kirill",
+      "password": "$2b$10$k5fsquF.JPNMtf9/MX9/q.x.cAom8fBp3pekeM4bw2MNVMRJiM2ly",
+      "extra": {}
+    },
+    "2": {
+      "id": 2,
+      "created": 1744223719983,
+      "active": 1744223719983,
+      "username": "rachelle",
+      "password": "$2b$10$u5Xxzqo5Na.XS6sanWMWXOwO.BB3AGuf47TaM6U8Ah2Pb107PC3Oi",
+      "extra": {
+        "aboutMe": "I like purples.",
+        "showTaken": true
+      }
+    },
+    "3": {
+      "id": 3,
+      "created": 1744223810096,
+      "active": 1744223810096,
+      "username": "Ziggy_the_Cat",
+      "password": "$2b$10$AJ/KPAn5NndxcRLwwtSkou5mffqvnbXEuuiQM4kV/hI7szZ9QH.Fi",
+      "extra": {}
+    },
+    "4": {
+      "id": 4,
+      "created": 1744224451545,
+      "active": 1744224451545,
+      "username": "science",
+      "password": "$2b$10$V322vzunaQcUsVH7OoeXZOgKSHzqFeNfKEML2KBWKE6oCxuKtqLI2",
+      "extra": {}
+    },
+    "5": {
+      "id": 5,
+      "created": 1744225480512,
+      "active": 1744225480512,
+      "username": "gamer",
+      "password": "$2b$10$72KA7qNYx.t6exxi.I1OceXjI0qcu65YmMwTOYNBGa.scW1XxSbTa",
+      "extra": {}
+    }
+  }
+}

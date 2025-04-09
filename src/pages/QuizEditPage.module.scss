@@ -1,0 +1,17 @@
+.QuizEditPage {
+
+  .questionButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 0.15rem;
+    align-self: stretch;
+    
+    @media screen and (max-width: 600px) {
+      & {
+        justify-content: space-between;
+      }
+    }
+  }
+}

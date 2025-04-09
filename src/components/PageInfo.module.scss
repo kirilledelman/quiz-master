@@ -1,0 +1,35 @@
+.PageInfo {
+  cursor: pointer;
+  color: var(--sub-bg-color);
+}
+
+.wrap {
+  width:0;
+  flex-basis: 100%;
+}
+
+.content {
+  display: block;
+  font-size: 1rem;
+  font-weight: normal;
+  interpolate-size: allow-keywords;
+  transition: opacity 0.25s, height 0.25s ease-out, margin 0.25s ease-out, padding 0.25s ease-out;
+  overflow: hidden;
+  cursor: default;
+
+  &.collapsed {
+    opacity: 0;
+    height: 0;
+    border-top: 0.1rem solid transparent;
+    margin: 0;
+    padding: 0 0.5rem 0 1rem;
+  }
+
+  &.expanded {
+    opacity: 1;
+    height: fit-content;
+    border-top: 0.1rem solid var(--sub-bg-color);
+    margin: 0.5rem 0 0 0;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+  }
+}

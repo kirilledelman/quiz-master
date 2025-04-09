@@ -1,0 +1,38 @@
+.QuizStatsPage {
+
+  .card {
+    padding: 1rem;
+    background-color: var(--sub-bg-color);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+    column-gap: 1rem;
+    border-radius: 0.5rem;
+    justify-content: space-between;
+    position: relative;
+
+    .title {
+      margin: 0;
+      white-space: wrap;
+      flex: 1;
+    }
+
+    .updated {
+      font-size: 90%;
+    }
+
+    .wrap {
+      width: 0;
+      flex-basis: 100%;
+    }
+  }
+
+  .results {
+      .empty {
+        display: block;
+        text-align: center;
+        padding-top: 2rem;
+      }
+  }
+}

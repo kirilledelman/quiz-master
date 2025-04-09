@@ -1,0 +1,43 @@
+.loadingSpinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--text-color);
+}
+
+.spinner_nOfF {
+    animation: spinner_qtyZ 2s cubic-bezier(0.36, .6, .31, 1) infinite
+}
+
+.spinner_fVhf {
+    animation-delay: -.5s
+}
+
+.spinner_piVe {
+    animation-delay: -1s
+}
+
+.spinner_MSNs {
+    animation-delay: -1.5s
+}
+
+@keyframes spinner_qtyZ {
+    0% {
+        r: 0
+    }
+    25% {
+        r: 3px;
+        cx: 4px
+    }
+    50% {
+        r: 3px;
+        cx: 12px
+    }
+    75% {
+        r: 3px;
+        cx: 20px
+    }
+    100% {
+        r: 0;
+        cx: 20px
+    }
+}

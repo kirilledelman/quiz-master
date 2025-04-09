@@ -1,0 +1,93 @@
+.QuizNavigation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: var(--sub-bg-color);
+  padding: 0.5rem;
+  border-radius: 1.5rem;
+  position: relative;
+  row-gap: 0.5rem;
+  overflow: hidden;
+
+  .innerBorder {
+    position: absolute;
+    border-radius: 1.5rem;
+    z-index: 2;
+    border: 0.4rem solid var(--sub-bg-color);
+    pointer-events: none;
+    left: 0; top: 0;
+    bottom: 0; right: 0;
+    opacity: 0.6;
+  }
+
+  &.edit {
+    background: var(--sub-sub-bg-color);
+    align-self: center;
+
+    .innerBorder { display: none }
+  }
+
+  .spacer {
+    flex: 1;
+    z-index: 1;
+    box-sizing: border-box;
+    margin: 0.5rem 0;
+    background: transparent;
+    position: relative;
+
+    .fill {
+      position: absolute;
+      left: -0.8rem; right: -0.8rem;
+      top: 0; bottom: 0;
+      background: var(--sub-sub-bg-color);
+    }
+
+    &.completed {
+      .fill {
+        background: var(--bg-color);
+      }
+    }
+  }
+
+  button {
+    padding: 0.5rem;
+    height: 2rem;
+    border-radius: 1rem;
+    font-size: 80%;
+    border: 0.15rem solid transparent;
+    background: var(--bg-color);
+    color: var(--link-color);
+    min-width: 2rem;
+    z-index: 2;
+    margin: 0 0.5rem;
+
+    &:nth-child(2) {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &[disabled] {
+      background: var(--sub-sub-bg-color);
+      &.completed {
+        background: var(--bg-color);
+        color: var(--link-color);
+      }
+    }
+
+    &:hover:not([disabled]) {
+      background: var(--link-color);
+      color: var(--bg-color);
+      z-index: 3;
+    }
+
+    &.current {
+      border: 0.15rem solid var(--link-color);
+      transform: scale(1.1);
+      z-index: 3;
+    }
+  }
+}

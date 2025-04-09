@@ -1,0 +1,54 @@
+.StatsResultItem {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background: var(--sub-bg-color);
+  gap: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+
+  div {
+    &.time {
+      width: 5rem;
+      align-items: start;
+    }
+
+    &.user {
+      flex:1;
+      text-align: right;
+      overflow: hidden;
+    }
+
+    &.score {
+      text-align: center;
+      width: 4rem;
+
+      strong { display: inline-block }
+    }
+
+    &.rating {
+      width: 5rem;
+      text-align: right;
+    }
+  }
+
+  .bad {
+    color: var(--alert-color);
+  }
+
+  .ok {
+    color: var(--link-color);
+  }
+
+  .great {
+    color: var(--positive-color);
+  }
+
+  .excellent {
+    background: var(--positive-color);
+    color: var(--bg-color);
+    border-radius: 0.15rem;
+    padding: 0 0.2rem;
+  }
+}

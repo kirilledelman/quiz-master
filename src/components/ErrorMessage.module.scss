@@ -1,0 +1,9 @@
+.ErrorMessage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 90%;
+    color: var(--alert-color);
+}

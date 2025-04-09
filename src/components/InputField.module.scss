@@ -1,0 +1,143 @@
+$label-width: 7rem;
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-self: stretch;
+  min-height: 3rem;
+
+  &.thin {
+    min-height: unset;
+  }
+
+  &.reversed {
+    flex-direction: row-reverse;
+  }
+
+  .wrapper {
+    flex: 1;
+    column-gap: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+
+    .error {
+      flex-basis: 100%;
+      padding-top: 0.2rem;
+      border-top: 0.1rem solid var(--alert-color);
+      color: var(--alert-color);
+      font-size: 75%;
+    }
+
+    .wrap {
+      width: 0;
+      flex-basis: 100%;
+    }
+
+    input {
+      font-size: 1rem;
+      font-family: var(--font-family);
+      border-radius: 0.25rem;
+      border: 0.1rem transparent;
+      padding: 0.25rem 0.5rem;
+      min-width: 1.5rem;
+      flex: 1;
+      outline-color: var(--link-color);
+      outline-width: thick;
+      accent-color: var(--link-color);
+    }
+
+    input[type="checkbox"],
+    input[type="radio"]{
+      height: 1.5rem;
+      width: 1.5rem;
+      margin: 0;
+    }
+
+    select {
+      font-size: 1rem;
+      font-family: var(--font-family);
+      border-radius: 0.25rem;
+      border: 0.1rem transparent;
+      padding: 0.25rem 0.5rem;
+      flex: 1;
+    }
+
+    textarea {
+      font-size: 1rem;
+      font-family: var(--font-family);
+      border-radius: 0.25rem;
+      border: 0.1rem transparent;
+      padding: 0.25rem 0.5rem;
+      width: 100%;
+      resize: vertical;
+      min-height: 2rem;
+    }
+  }
+
+  &.reversed.nopad .wrapper,
+  &.nopad .wrapper {
+    flex: unset;
+    padding-left: 0;
+  }
+
+  &.reversed .wrapper {
+    flex: unset;
+    padding: 0 0 0 $label-width+1;
+  }
+
+  &.clearButton .wrapper {
+    flex-wrap: nowrap;
+    align-self: center;
+    gap: 0.1rem;
+  }
+
+  label {
+    min-width: $label-width;
+    text-align: right;
+    padding: 0.25rem 1rem 0 0;
+    align-self: self-start;
+  }
+
+  &.reversed label {
+    text-align: left;
+    width: unset;
+    flex: 1;
+    padding: 0.25rem 0 0 0.5rem;
+  }
+
+  &.error label {
+    color: var(--alert-color);
+  }
+
+  .clear {
+    width: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .row {
+    &.hasLabel:not(.reversed) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    label {
+      text-align: left;
+      align-self: unset;
+      padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+      min-width: unset;
+    }
+
+    .wrapper {
+      width: 100%;
+    }
+
+    &.reversed .wrapper {
+      width: unset;
+      padding: 0 0 0 0.25rem;
+    }
+  }
+}

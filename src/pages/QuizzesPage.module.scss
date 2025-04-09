@@ -1,0 +1,33 @@
+.QuizzesPage {
+
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: space-between;
+
+    > :last-child {
+      flex:1;
+      min-width: 4rem;
+
+      input {
+        max-width: 8rem;
+        @media screen and (max-width: 600px) {
+          max-width: unset;
+        }
+      }
+    }
+  }
+
+  .quizList {
+    display: flex;
+    flex-direction: column;
+
+    .empty {
+      color: var(--light-text-color);
+      text-align: center;
+      padding-top: 2rem;
+    }
+  }
+}

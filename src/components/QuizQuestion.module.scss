@@ -1,0 +1,32 @@
+.QuizQuestion {
+  margin-top: 1rem;
+  .questionBody {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 0 4rem;
+
+    p {
+      margin-top: 0;
+      white-space: pre-wrap;
+    }
+
+    @media screen and (max-width: 600px){
+      padding: 0 1rem;
+    }
+  }
+
+  .choices {
+    margin-bottom: 1rem;
+    padding: 0 1rem 0 5rem;
+    @media screen and (max-width: 600px){
+      padding: 0 1rem 0 2rem;
+    }
+  }
+
+  .tip {
+    font-size: 75%;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+    text-align: right;
+  }
+}

@@ -1,0 +1,48 @@
+.QuizItem {
+    display: flex;
+    background: var(--sub-bg-color);
+    border-radius: 0.3rem;
+    cursor: default;
+
+    .leftSide {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex: 1;
+
+        .link {
+            flex-basis: 100%;
+            font-weight: bold;
+            text-decoration: none;
+            overflow: hidden;
+            padding: 0.5rem 0.5rem 0 0.5rem;
+        }
+
+        .info {
+            overflow: hidden;
+            margin: 0;
+            padding: 0.5rem;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 70%;
+            text-align: left;
+            white-space: nowrap;
+
+            .empty {
+                color: var(--light-text-color);
+            }
+
+            &.right { text-align: right; flex: unset; }
+        }
+    }
+
+    .rightSide {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0.25rem;
+        border-left: 0.1rem solid var(--bg-color);
+    }
+}

@@ -1,0 +1,26 @@
+.Icon {
+  display: inline;
+  max-width: 2rem;
+  width: 2rem;
+  aspect-ratio: 1;
+  background: transparent;
+  fill: currentColor;
+  padding: 0.15rem;
+
+  &.float-left {
+    float: left;
+    margin-right: 0.5rem;
+  }
+
+  &.small {
+    max-width: 1.25rem;
+    width: 1.25rem;
+    padding: 0;
+  }
+
+  &.tiny {
+    max-width: 1rem;
+    width: 1rem;
+    padding: 0;
+  }
+}

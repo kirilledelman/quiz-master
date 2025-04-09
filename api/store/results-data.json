@@ -1,0 +1,14 @@
+{
+  "index": 1,
+  "entries": [
+    {
+      "id": 1,
+      "userId": 0,
+      "quizId": 1,
+      "result": 100,
+      "rating": 0,
+      "timestamp": 1744215145566,
+      "username": "Unknown"
+    }
+  ]
+}

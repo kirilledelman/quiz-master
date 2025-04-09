@@ -1,0 +1,56 @@
+.QuizResultItem {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background: var(--sub-bg-color);
+  gap: 0.5rem;
+  white-space: wrap;
+  overflow: hidden;
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    span:last-child {
+      font-size: 75%;
+    }
+
+    &.name {
+      flex: 1;
+    }
+
+    &.time {
+      width: 7rem;
+      align-items: center;
+    }
+
+    &.score {
+      align-items: end;
+      width: 4rem;
+
+      span:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .bad {
+    color: var(--alert-color);
+  }
+
+  .ok {
+    color: var(--link-color);
+  }
+
+  .great {
+    color: var(--positive-color);
+  }
+
+  .excellent {
+    background: var(--positive-color);
+    color: var(--alt-text-color);
+    border-radius: 0.15rem;
+    padding: 0 0.2rem;
+  }
+}
