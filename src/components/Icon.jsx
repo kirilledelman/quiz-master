@@ -24,11 +24,11 @@ const _icons = {
 	</g>)
 };
 
-export default function Icon({icon, mode='', className='', tooltip="About this page", ...rest}) {
+export default function Icon({icon, mode='', className='', tooltip, ...rest}) {
 	const modes = mode.split(/\s+/).reduce((a, c) => a + ' ' + (styles[c] || ''), ''),
 		  classNames = styles.Icon + ' ' + (modes) + ' ' + className;
 	return <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" className={classNames} {...rest}>
-		<title>{tooltip}</title>
+		{ tooltip && <title>{tooltip}</title> }
 		{_icons[icon] || <g/>}
 	</svg>
 }

@@ -1,8 +1,8 @@
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import styles from './Header.module.scss';
 import Icon from "./Icon.jsx";
-import { useEffect, useRef, useState } from "react";
+import styles from './Header.module.scss';
 
 export default function Header() {
 	const user = useSelector((state) => state.user.user),
@@ -46,7 +46,7 @@ export default function Header() {
 		</div>
 		{ user ?
 		(<div className={styles.user}>
-			<NavLink to="/user" className={activeClassName}><Icon icon="user" mode="small"/></NavLink>
+			<NavLink to="/user" className={activeClassName} title={user.username}><Icon icon="user" mode="small"/></NavLink>
 			<Link to="/user/logout" >Log Out</Link>
 		</div>) :
 		(<div className={styles.user}>

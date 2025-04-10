@@ -47,7 +47,7 @@ export default function UserPage() {
 
 	return (<article className={styles.UserPage}>
 		<h2>{showingThisUser ?
-			(<>Your Profile<span className="flex"/><Link className="button small" to="/user/edit">Account Settings</Link></>) : ("User")}
+			(<>Your Profile<span className="flex"/><Link className="button small" to="/user/edit">Account Settings</Link></>) : "User Profile"}
 			<PageInfo>
 				This page uses React router loader to retrieve user info.
 			</PageInfo>
