@@ -1,10 +1,10 @@
 {
-  "index": 5,
+  "index": 6,
   "entries": {
     "1": {
       "id": 1,
       "created": 1744214349548,
-      "active": 1744226394957,
+      "active": 1744293562159,
       "username": "kirill",
       "password": "$2b$10$k5fsquF.JPNMtf9/MX9/q.x.cAom8fBp3pekeM4bw2MNVMRJiM2ly",
       "extra": {}
@@ -23,7 +23,7 @@
     "3": {
       "id": 3,
       "created": 1744223810096,
-      "active": 1744223810096,
+      "active": 1744293420600,
       "username": "Ziggy_the_Cat",
       "password": "$2b$10$AJ/KPAn5NndxcRLwwtSkou5mffqvnbXEuuiQM4kV/hI7szZ9QH.Fi",
       "extra": {}
@@ -42,6 +42,14 @@
       "active": 1744225480512,
       "username": "gamer",
       "password": "$2b$10$72KA7qNYx.t6exxi.I1OceXjI0qcu65YmMwTOYNBGa.scW1XxSbTa",
+      "extra": {}
+    },
+    "6": {
+      "id": 6,
+      "created": 1744292994986,
+      "active": 1744293013320,
+      "username": "test",
+      "password": "$2b$10$WOWz6v7Y8X61hIGNitAdJOGHGA29qODD1ArE4LhnJEmmcaLQdQObu",
       "extra": {}
     }
   }

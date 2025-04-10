@@ -1,8 +1,8 @@
-import {useActionState} from "react";
+import { useActionState, useEffect, useState } from "react";
 import {useDispatch} from "react-redux";
 import { backendUrl } from "../util/common";
 import { uiActions } from "../store/ui";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import {userActions} from "../store/user";
 import ErrorMessage from "../components/ErrorMessage";
 import InputField from "../components/InputField.jsx";
@@ -10,13 +10,24 @@ import PageInfo from "../components/PageInfo.jsx";
 
 export default function NewUserPage() {
 	const dispatch = useDispatch(),
-		navigate = useNavigate();
+		navigate = useNavigate(),
+		[redirect, setRedirect] = useState(''),
+		[searchParams, setSearchParams] = useSearchParams();
+
+	// search params effects
+	useEffect(() => {
+		// save redirect url
+		const redir = searchParams.get("redirect");
+		if ( redir ) setRedirect(redir);
+		// clear query in location
+		setSearchParams({});
+	},[searchParams, setSearchParams, dispatch]);
 
 	async function handleAction( prevState, formData ) {
 		// validation
 		const username = formData.get("username"),
 			password = formData.get("password"),
-			formValues = { username, password };
+			formValues = { username, password, errors: {} };
 		if ( username.length < 3 || username.length > 24 ) return { errors: { username: "Username should be 3-24 chars long" }, ...formValues };
 		if ( username.match(/[^a-zA-Z0-9_]/) ) return { errors: { username: "Username can only contain alphanumerical characters" }, ...formValues };
 		if ( password.length < 5 || password.length > 64) return { errors: { password: "Password should be at between 5 and 64 characters" }, ...formValues };
@@ -34,7 +45,7 @@ export default function NewUserPage() {
 		// success
 		dispatch(userActions.loggedIn(reply));
 		dispatch(uiActions.showNotification("Account created successfully."));
-		navigate("/");
+		navigate('/' + redirect);
 		return formValues;
 	}
 

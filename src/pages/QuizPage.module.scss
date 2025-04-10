@@ -41,6 +41,13 @@
     }
   }
 
+  .login {
+    font-size: 90%;
+    color: var(--light-text-color);
+    text-align: center;
+    margin: 1rem 0;
+  }
+
   .prevNext {
     display: flex;
     flex-direction: row;

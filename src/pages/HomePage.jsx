@@ -26,6 +26,7 @@ export default function HomePage() {
 			<p><Icon icon="react" mode="float-left"/> The goal of this application is to demonstrate the ability to use <strong>React</strong>, <strong>React Router</strong>, and <strong>Redux store</strong>.</p>
 			<p>You can browse <Link to="/quizzes">quizzes</Link> published by other users without logging in.</p>
 			<p>To rate quizzes, track your results, and create your own quizzes <Link to="/user/new">create an account</Link> or <Link  to="/user/login">log in</Link>.</p>
+			<p>This project source can be found at <a href="https://github.com/kirilledelman/quiz-master">github.com/kirilledelman/quiz-master</a></p>
 		</div>
 		<footer>&copy; Kirill Edelman {new Date().getFullYear()}</footer>
 	</article>);

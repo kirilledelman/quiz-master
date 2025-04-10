@@ -38,7 +38,7 @@ export default function LogInPage() {
 		const username = formData.get("username"),
 			password = formData.get("password"),
 			remember = formData.get("remember"),
-			formValues = { username, password };
+			formValues = { username, password, errors: {} };
 		if ( username.length < 3 ) return { errors: { username: "Invalid username" }, ...formValues };
 		if ( password.length < 5 ) return { errors: { password: "Invalid password" } , ...formValues };
 

@@ -6,7 +6,7 @@
       "published": true,
       "title": "US History",
       "created": 1744214766617,
-      "updated": 1744214922559,
+      "updated": 1744293746730,
       "size": 4,
       "ownerId": 1,
       "taken": 1,
@@ -17,7 +17,7 @@
           {
             "type": "start",
             "title": "Welcome!",
-            "showIntro": true,
+            "showIntro": false,
             "text": "Test your knowledge of key moments in United States history—from independence to civil rights. Let’s see how much you remember!"
           },
           {
@@ -289,11 +289,11 @@
               },
               {
                 "text": "Maine Coon",
-                "correct": true
+                "correct": false
               },
               {
                 "text": "Sphynx",
-                "correct": false
+                "correct": true
               },
               {
                 "text": "Ragdoll",
@@ -1158,9 +1158,9 @@
       "updated": 1744226341589,
       "size": 4,
       "ownerId": 5,
-      "taken": 0,
-      "rated": 0,
-      "rating": 0,
+      "taken": 3,
+      "rated": 2,
+      "rating": 9,
       "data": {
         "questions": [
           {

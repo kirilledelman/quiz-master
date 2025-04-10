@@ -1,5 +1,5 @@
 {
-  "index": 1,
+  "index": 4,
   "entries": [
     {
       "id": 1,
@@ -9,6 +9,30 @@
       "rating": 0,
       "timestamp": 1744215145566,
       "username": "Unknown"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "quizId": 44,
+      "result": 100,
+      "rating": 5,
+      "timestamp": 1744293361714
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "quizId": 44,
+      "result": 13,
+      "rating": 2,
+      "timestamp": 1744293443048
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "quizId": 44,
+      "result": 63,
+      "rating": 4,
+      "timestamp": 1744293509793
     }
   ]
 }

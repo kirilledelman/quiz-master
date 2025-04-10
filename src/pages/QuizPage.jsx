@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useCallback, useState } from "react";
 import QuizNavigation from "../components/QuizNavigation.jsx";
 import useUnsavedChanges from "../hooks/useUnsavedChanges.jsx";
@@ -26,6 +26,11 @@ export default function QuizPage() {
 		[, setDirty, setClean] = useUnsavedChanges("If you navigate away from this page your progress will be lost. Do you want to abandon this quiz?"),
 		// answers are initialized with []
 		[answers, setAnswers] = useState(Array.from(quiz.data.questions).map(()=>[]));
+
+	// flags
+	const prevHidden = currentQuestion === firstQuestion || currentQuestion === totalQuestions - 1,
+		nextDisabled = currentQuestion > 0 && currentQuestion < totalQuestions - 1 && quiz.data.questions[currentQuestion].type !== 'text' && !answers[currentQuestion].includes(true),
+		showLoginPrompt = !user && currentQuestion === firstQuestion && currentProgress <= firstQuestion;
 
 	// calculate score, create summary, save result
 	const quizFinished = useCallback(async ()=>{
@@ -128,14 +133,9 @@ export default function QuizPage() {
 	// update answers for current question
 	const answerChanged = useCallback((answer)=>{
 		answers[currentQuestion] = answer;
-		setDirty();
+		if (!showLoginPrompt) setDirty();
 		setAnswers([...answers]);
-	}, [answers, setAnswers, currentQuestion, setDirty]);
-
-	// flags for next/prev buttons
-	const prevHidden = currentQuestion === firstQuestion || currentQuestion === totalQuestions - 1,
-		nextDisabled = currentQuestion > 0 && currentQuestion < totalQuestions - 1 &&
-			quiz.data.questions[currentQuestion].type !== 'text' && !answers[currentQuestion].includes(true);
+	}, [answers, setAnswers, currentQuestion, setDirty, showLoginPrompt]);
 
 	// share onClick function
 	const tryShare = useCallback(async e => {
@@ -161,6 +161,10 @@ export default function QuizPage() {
 		<h2>{quiz.title}</h2>
 		<QuizNavigation currentQuestion={currentQuestion} currentProgress={currentProgress} skipIntro={firstQuestion === 1}
 		                onQuestionClicked={setCurrentQuestion} totalQuestions={totalQuestions} />
+
+		{ showLoginPrompt &&
+			(<div className={styles.login}>
+				<Link to={`/user/new?redirect=quiz/${quiz.id}`}>Create account</Link> or <Link to={`/user/login?redirect=quiz/${quiz.id}`}>log in</Link> to track results and rate quizzes.</div>) }
 
 		<QuizQuestion question={quiz.data.questions[currentQuestion]} answer={answers[currentQuestion]} onChange={answerChanged}/>
 
