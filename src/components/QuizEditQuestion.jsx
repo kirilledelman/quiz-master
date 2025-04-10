@@ -1,8 +1,13 @@
-import InputField from "./InputField.jsx";
-import { useCallback } from "react";
-import styles from './QuizEditQuestion.module.scss';
-import ErrorMessage from "./ErrorMessage.jsx";
-import Icon from "./Icon.jsx";
+import styles from './QuizEditQuestion.module.scss'
+import InputField from "./InputField.jsx"
+import ErrorMessage from "./ErrorMessage.jsx"
+import Icon from "./Icon.jsx"
+import { useCallback } from "react"
+
+/*
+	Component for editing a single quiz question
+*/
+
 export default function QuizEditQuestion({ question, onChange, endCap, textError='', choicesError='' }) {
 	const valueChanged = useCallback(function (event) {
 		question[event.target.name] = event.target.type === 'checkbox' ? event.target.checked : event.target.value;

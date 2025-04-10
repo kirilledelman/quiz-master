@@ -1,12 +1,12 @@
-import ExpandableArea from "./ExpandableArea.jsx";
-import QuizSummaryBreakdownItem from "./QuizSummaryBreakdownItem.jsx";
 import styles from './QuizCompletedSummary.module.scss'
+import ExpandableArea from "./ExpandableArea.jsx"
+import QuizSummaryBreakdownItem from "./QuizSummaryBreakdownItem.jsx"
+
+/*
+	Summary with user's score and answers displayed after taking a quiz.
+*/
 
 export default function QuizCompletedSummary ({ summary, showCorrect, children }) {
-
-	if (!summary) return (<></>);
-
-	// determine rating
 	const rating = summary.percent >= 100 ? 3 : summary.percent >= 75 ? 2 : summary.percent > 25 ? 1 : 0;
 
 	return (<summary className={styles.QuizCompletedSummary}>

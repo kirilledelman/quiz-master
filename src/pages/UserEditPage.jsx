@@ -1,15 +1,19 @@
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
-import { backendUrl, getAuthHeader } from "../util/common";
+import { backendUrl, getAuthHeader } from "../util/common"
+import { uiActions } from "../store/ui"
+import { userActions } from "../store/user"
+import ErrorMessage from "../components/ErrorMessage"
+import InputField from "../components/InputField.jsx"
+import PageInfo from "../components/PageInfo.jsx"
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef } from "react";
-import { uiActions } from "../store/ui";
-import { userActions } from "../store/user";
-import ErrorMessage from "../components/ErrorMessage";
-import InputField from "../components/InputField.jsx";
-import PageInfo from "../components/PageInfo.jsx";
+import { useEffect, useRef } from "react"
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom"
 
-// update user name and password router action
-export async function action({ request }) {
+/*
+	Page that lets user edit their info, and change password
+*/
+
+// router action that updates username and password
+export async function updateUserAction({ request }) {
 	const formData = await request.formData(),
 		username = formData.get('username'),
 		password = formData.get('password'),
@@ -60,7 +64,7 @@ export default function UserEditPage() {
 		showTaken = !!user?.extra?.showTaken,
 		errors = actionData?.errors || {};
 
-	// process action from
+	// process action from form
 	useEffect(() => {
 		if ( actionData && actionData.success ) {
 			dispatch(uiActions.showNotification("User information updated."));
@@ -78,6 +82,7 @@ export default function UserEditPage() {
 		<h2>Account Settings
 			<PageInfo>This page uses React Router action to update user profile, and useEffect to update React state with returned useActionData.</PageInfo>
 		</h2>
+
 		<Form ref={formRef} className="box" method="POST">
 			<InputField name="username" label="Username" minLength="3" maxLength="24" value={username} error={errors.username} />
 			<InputField name="aboutMe" label="About me" type="textarea" value={aboutMe} />
@@ -87,9 +92,5 @@ export default function UserEditPage() {
 			{ errors.form && <ErrorMessage>{errors.form}</ErrorMessage> }
 			<button disabled={navigation.state !== 'idle'} type="submit">Update Details</button>
 		</Form>
-
-		<footer>
-
-		</footer>
 	</article>);
 }

@@ -1,8 +1,14 @@
-import { backendUrl, formatTimestamp, getAuthHeader } from "../util/common.js";
-import { Link, redirect, useLoaderData } from "react-router-dom";
-import styles from "./QuizStatsPage.module.scss";
-import StatsResultItem from "../components/StatsResultItem.jsx";
+import styles from "./QuizStatsPage.module.scss"
+import { backendUrl, formatTimestamp, getAuthHeader } from "../util/common.js"
+import { redirect, useLoaderData } from "react-router-dom"
+import StatsResultItem from "../components/StatsResultItem.jsx"
+import PageInfo from "../components/PageInfo.jsx"
 
+/*
+	Stats page for quiz owner to see who took the quiz and how they did
+*/
+
+// loads stats for this page
 export async function statsLoader({params}) {
 	const response = await fetch(`${backendUrl}/results/${params.quizId}`,
 		{ method: 'GET', headers: getAuthHeader() });
@@ -15,16 +21,17 @@ export async function statsLoader({params}) {
 
 export default function QuizStatsPage() {
 	const statsData = useLoaderData(),
-		trunc = (value) => value.toFixed(1).replace(/\.?0*$/,'');
+		trunc = (value) => value.toFixed(1).replace(/\.?0*$/,''), // format
+		rating = statsData.rated > 0 ? trunc(statsData.rating / statsData.rated) : 0,
+		avgScore = trunc(statsData.stats.reduce((total, item) => total + item.result, 0) / Math.max(1, statsData.stats.length)); // average score
+
+	// sort by timestamp
 	statsData.stats = statsData.stats.sort((a, b) => b.timestamp - a.timestamp);
 
-	// format rating
-	const rating = statsData.rated > 0 ? trunc(statsData.rating / statsData.rated) : 0;
-	// average score
-	const avgScore = trunc(statsData.stats.reduce((total, item) => total + item.result, 0) / Math.max(1, statsData.stats.length));
-
 	return (<article className={styles.QuizStatsPage}>
-		<h2>Quiz Stats</h2>
+		<h2>Quiz Stats
+			<PageInfo>This page uses a loader to retrieve its data.</PageInfo>
+		</h2>
 		<div className={styles.card}>
 			<h2 className={styles.title}>{statsData.title}</h2>
 			<div className={styles.updated}>Updated {formatTimestamp(statsData.updated)}</div>

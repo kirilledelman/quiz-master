@@ -1,9 +1,12 @@
-import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
-import styles from './HomePage.module.scss';
-import Icon from "../components/Icon.jsx";
+import styles from './HomePage.module.scss'
+import Icon from "../components/Icon.jsx"
+import {Link} from "react-router-dom"
+import {useSelector} from "react-redux"
 
-/* landing page */
+/*
+	Landing page
+*/
+
 export default function HomePage() {
 	const user = useSelector((state) => state.user.user);
 

@@ -24,10 +24,10 @@
         top: 2rem;
         position: relative;
     }
-}
 
-.show {
-    opacity: 1;
+    &.show {
+        opacity: 1;
 
-    .wrapper { top: 0.5rem; }
+        .wrapper { top: 0.5rem; }
+    }
 }

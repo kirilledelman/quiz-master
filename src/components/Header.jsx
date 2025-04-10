@@ -1,26 +1,29 @@
-import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
-import Icon from "./Icon.jsx";
-import styles from './Header.module.scss';
+import styles from './Header.module.scss'
+import Icon from "./Icon.jsx"
+import { useEffect, useRef, useState } from "react"
+import { useSelector } from "react-redux"
+import { Link, NavLink } from "react-router-dom"
+
+/*
+Site header area
+*/
 
 export default function Header() {
-	const user = useSelector((state) => state.user.user),
-		menuRef = useRef(),
-		[ expanded, setExpanded ] = useState(false),
-		activeClassName = ({isActive}) => isActive ? styles.active : undefined;
+	const menuRef = useRef(),
+		user = useSelector((state) => state.user.user),
+		activeClassName = ({isActive}) => isActive ? styles.active : undefined,
+		[ expanded, setExpanded ] = useState(false);
 
-	function toggleMenu() {
-		setExpanded(!expanded);
-	}
-
+	// show/hide narrow screen menu
 	useEffect(() => {
 		let interval;
 		const menuStyles = menuRef.current.style,
 			menuClasses = menuRef.current.classList;
+		// make visible, then set class
 		if ( expanded ) {
 			menuStyles.visibility = 'visible';
 			interval = setInterval(() => { menuClasses.add(styles.expanded); });
+		// remove class, then make invisible
 		} else {
 			menuClasses.remove(styles.expanded);
 			menuClasses.add(styles.hiding);
@@ -35,14 +38,12 @@ export default function Header() {
 	return (
 	<nav className={styles.Header}>
 		<div className={styles.wide}>
-			<NavLink to="/" className={styles.title}><Icon icon="logo"/> Quiz Master</NavLink>
+			<NavLink to="/" className={styles.title}><Icon icon="logo"/>Quiz Master</NavLink>
 			<NavLink to="/quizzes" className={activeClassName}>Quizzes</NavLink>
-			{ user && (
-				<NavLink to="/quiz" end>Create Quiz</NavLink>
-			) }
+			{ user && (<NavLink to="/quiz" end>Create Quiz</NavLink>) }
 		</div>
 		<div className={styles.narrow}>
-			<a onClick={toggleMenu} className={styles.title}><Icon icon="menu"/> Quiz Master</a>
+			<a onClick={()=>setExpanded(!expanded)} className={styles.title}><Icon icon="menu"/>Quiz Master</a>
 		</div>
 		{ user ?
 		(<div className={styles.user}>
@@ -54,7 +55,7 @@ export default function Header() {
 			<NavLink to="/user/new" className={`${activeClassName} ${styles.wide}`}>New User</NavLink>
 		</div>)}
 
-		<menu ref={menuRef} className={styles.menu} onClick={toggleMenu}>
+		<menu ref={menuRef} className={styles.menu} onClick={()=>setExpanded(!expanded)}>
 			<ul>
 				<li className={styles.title}><Icon icon="menu"/> Quiz Master</li>
 				<li><Link to="/quizzes">Quizzes</Link></li>
@@ -68,6 +69,5 @@ export default function Header() {
 					</>) }
 			</ul>
 		</menu>
-
 	</nav>);
 }

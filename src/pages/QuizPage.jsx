@@ -1,14 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { useCallback, useState } from "react";
-import QuizNavigation from "../components/QuizNavigation.jsx";
-import useUnsavedChanges from "../hooks/useUnsavedChanges.jsx";
-import QuizQuestion from "../components/QuizQuestion.jsx";
-import QuizCompletedSummary from "../components/QuizCompletedSummary.jsx";
-import { uiActions } from "../store/ui";
-import styles from './QuizPage.module.scss';
-import { backendUrl, getAuthHeader } from "../util/common.js";
-import Icon from "../components/Icon.jsx";
+import styles from './QuizPage.module.scss'
+import { backendUrl, getAuthHeader } from "../util/common.js"
+import { uiActions } from "../store/ui"
+import QuizNavigation from "../components/QuizNavigation.jsx"
+import useUnsavedChanges from "../hooks/useUnsavedChanges.jsx"
+import QuizQuestion from "../components/QuizQuestion.jsx"
+import QuizCompletedSummary from "../components/QuizCompletedSummary.jsx"
+import Icon from "../components/Icon.jsx"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useLoaderData, useNavigate } from "react-router-dom"
+import { useCallback, useState } from "react"
+
+/*
+	Page for taking a quiz
+*/
 
 export default function QuizPage() {
 	const dispatch = useDispatch(),
@@ -22,9 +26,7 @@ export default function QuizPage() {
 		[summary, setSummary] = useState(null),
 		[resultId, setResultId] = useState(0),
 		[rating, setRating] = useState(0),
-		// prevent navigating away if any questions were answered
 		[, setDirty, setClean] = useUnsavedChanges("If you navigate away from this page your progress will be lost. Do you want to abandon this quiz?"),
-		// answers are initialized with []
 		[answers, setAnswers] = useState(Array.from(quiz.data.questions).map(()=>[]));
 
 	// flags
@@ -33,7 +35,7 @@ export default function QuizPage() {
 		showLoginPrompt = !user && currentQuestion === firstQuestion && currentProgress <= firstQuestion;
 
 	// calculate score, create summary, save result
-	const quizFinished = useCallback(async ()=>{
+	async function quizFinished() {
 		let _totalPoints = 0, _scoredPoints = 0, _totalPenalty = 0,
 			_correctAnswers = 0, _partialAnswers = 0,
 			_summary = [];
@@ -106,7 +108,10 @@ export default function QuizPage() {
 			totalQuestions: _summary.length, correctAnswers: _correctAnswers, partialAnswers: _partialAnswers
 		};
 
+		// update result
 		setSummary(result);
+
+		// send to server
 		const payload = { score: result.percent };
 		const response = await fetch(`${backendUrl}/results/add/${quiz.id}`, {
 			method: "POST", headers:  getAuthHeader(),
@@ -114,10 +119,10 @@ export default function QuizPage() {
 		});
 		const reply = await response.json();
 		setResultId(reply.resultId);
-	}, [quiz, answers]);
+	}
 
 	// next/previous
-	const go = useCallback( function (dir) {
+	function go (dir) {
 		const newIndex = Math.max(firstQuestion, currentQuestion + dir);
 		// past last one? go back to quizzes
 		if (newIndex >= totalQuestions) {
@@ -128,7 +133,7 @@ export default function QuizPage() {
 		}
 		setCurrentQuestion(newIndex);
 		setCurrentProgress(Math.max(newIndex, currentProgress));
-	}, [currentQuestion, currentProgress, setCurrentProgress, setCurrentQuestion, totalQuestions, navigate, setClean, quizFinished, firstQuestion] );
+	}
 
 	// update answers for current question
 	const answerChanged = useCallback((answer)=>{

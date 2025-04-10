@@ -1,9 +1,13 @@
-import { useEffect } from "react";
-import { userActions } from "../store/user.js";
-import { uiActions } from "../store/ui.js";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { backendUrl, getAuthHeader } from "../util/common.js";
+import { backendUrl, getAuthHeader } from "../util/common.js"
+import { userActions } from "../store/user.js"
+import { uiActions } from "../store/ui.js"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+
+/*
+	Page that logs user out, displays a message, and redirects to the home page
+*/
 
 export default function LogOutPage() {
 	const dispatch = useDispatch(),

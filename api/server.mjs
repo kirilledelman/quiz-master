@@ -18,21 +18,6 @@ app.use(function(req, res, next) {
 	next();
 });
 
-
-/*
-Response codes:
-
-200 OK – Successful requests that return data.
-201 Created – When a resource is successfully created (e.g., user registration).
-400 Bad Request – When the request is malformed (e.g., missing required fields).
-401 Unauthorized – When authentication is required but not provided or incorrect.
-403 Forbidden – When the user does not have permission to perform the action.
-404 Not Found – When requesting a resource that doesn’t exist (e.g., invalid ID).
-409 Conflict – When there's a conflict, such as trying to create a user with a taken username.
-422 Unprocessable Entity – When validation fails (e.g., invalid email format).
-500 Internal Server Error – For unexpected server-side errors.
-*/
-
 // POST quizId, score => { success, resultId }
 app.post('/results/add/:quizId', users.optionalAuth, async (req, res) => {
 	const userId = req.authTokenValid ? req.userId : 0,
@@ -133,7 +118,7 @@ app.get("/quiz/:quizId", users.optionalAuth, async (req, res) => {
 
 // GET perPage (optional) -> [ { username, ...quiz }, { username, ...quiz } ... ]
 app.get("/quizzes/:opts/:page", users.optionalAuth, async (req, res) => {
-	const perPage = parseInt(req.query.perPage) || 10;
+	const perPage = parseInt(req.query.perPage) || 20;
 	const page = parseInt(req.params.page) || 0;
 	const filter = req.headers['filter'] || "";
 	const reply = await quizzes.list(req.params.opts, perPage, page, req.userId, filter);

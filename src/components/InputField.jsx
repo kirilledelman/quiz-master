@@ -1,5 +1,9 @@
-import styles from './InputField.module.scss';
-import { useRef } from "react";
+import styles from './InputField.module.scss'
+import { useRef } from "react"
+
+/*
+	General form input field used throughout the site
+*/
 
 export default function InputField({ name, label, type='text', error, value, onChange, reverseLabel, clearButton,
 	                                   children, thin=false, nopad=false, preField=null, postField=null, ...rest }) {

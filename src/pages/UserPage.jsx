@@ -1,13 +1,19 @@
-import { backendUrl, formatTimestamp, getAuthHeader } from "../util/common.js";
-import { Link, redirect, useLoaderData, useRevalidator } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import QuizItem from "../components/QuizItem.jsx";
-import { uiActions } from "../store/ui.js";
-import QuizResultItem from "../components/QuizResultItem.jsx";
-import styles from "./UserPage.module.scss";
-import Icon from "../components/Icon.jsx";
-import PageInfo from "../components/PageInfo.jsx";
+import styles from "./UserPage.module.scss"
+import { uiActions } from "../store/ui.js"
+import { backendUrl, formatTimestamp, getAuthHeader } from "../util/common.js"
+import QuizItem from "../components/QuizItem.jsx"
+import QuizResultItem from "../components/QuizResultItem.jsx"
+import Icon from "../components/Icon.jsx"
+import PageInfo from "../components/PageInfo.jsx"
+import { Link, redirect, useLoaderData, useRevalidator } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { useCallback } from "react"
 
+/*
+	Page that displays info about a user, including quizzes they have taken or created
+*/
+
+// loader function for this page
 export async function userLoader({ params }) {
 	const response = await fetch(`${backendUrl}/user/${params.userId || 0}`,
 		{ method: 'GET', headers: getAuthHeader() });
@@ -29,7 +35,8 @@ export default function UserPage() {
 		quizzes = loaderData.quizzes.sort((a, b) => b.updated - a.updated),
 		results = loaderData.results.sort((a, b) => b.highestTimestamp - a.highestTimestamp);
 
-	async function deleteQuiz(item) {
+	// callback for QuizItem delete button
+	const deleteQuiz = useCallback(async (item)=>{
 		if ( item.ownerId === user?.id && confirm("Are you sure you want to delete this quiz?") ) {
 			const response = await fetch(`${backendUrl}/quiz/${item.id}`, {
 				method: "DELETE", headers: getAuthHeader()
@@ -43,7 +50,7 @@ export default function UserPage() {
 				revalidator.revalidate(); // reloads data from loader
 			}
 		}
-	}
+	}, [dispatch, revalidator, user]);
 
 	return (<article className={styles.UserPage}>
 		<h2>{showingThisUser ?
@@ -52,16 +59,19 @@ export default function UserPage() {
 				This page uses React router loader to retrieve user info.
 			</PageInfo>
 		</h2>
+
 		<div className={styles.card}>
 			<Icon icon="user"/>
 			<h2 className={styles.username}>{loaderData.user.username}</h2>
 			<span className={styles.created}>Joined {formatTimestamp(loaderData.user.created)}</span>
 			<div className={styles.about}>{loaderData.user.extra.aboutMe}</div>
 		</div>
+
 		<div className={styles.tabs}>
 			<a className={tab === 'quizzes' ? 'tab active' : 'tab'} onClick={()=>dispatch(uiActions.setUserTab('quizzes'))}>Quizzes Created</a>
 			{ showTakenTab && <a className={tab === 'results' ? 'tab active' : 'tab'} onClick={()=>dispatch(uiActions.setUserTab('results'))}>Quizzes Taken</a> }
 		</div>
+
 		{ showTakenTab && tab === 'results' &&
 		(<ul className={styles.quizList}>
 			{ !loaderData.user.extra.showTaken &&
@@ -73,6 +83,7 @@ export default function UserPage() {
 				(<li className={styles.empty}>Nothing to display.</li>)
 			}
 		</ul>)}
+
 		{ tab === 'quizzes' && (
 		<ul className={styles.quizList}>
 			{ quizzes.length ?

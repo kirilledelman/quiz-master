@@ -1,5 +1,5 @@
 {
-  "index": 44,
+  "index": 46,
   "entries": {
     "1": {
       "id": 1,
@@ -9,7 +9,7 @@
       "updated": 1744293746730,
       "size": 4,
       "ownerId": 1,
-      "taken": 1,
+      "taken": 2,
       "rated": 0,
       "rating": 0,
       "data": {
@@ -138,7 +138,7 @@
       "updated": 1744215513300,
       "size": 4,
       "ownerId": 1,
-      "taken": 0,
+      "taken": 1,
       "rated": 0,
       "rating": 0,
       "data": {
@@ -215,11 +215,11 @@
               },
               {
                 "text": "Wendy’s",
-                "correct": true
+                "correct": false
               },
               {
                 "text": "McDonald’s",
-                "correct": false
+                "correct": true
               },
               {
                 "text": "Taco Bell",
@@ -267,9 +267,9 @@
       "updated": 1744224354706,
       "size": 3,
       "ownerId": 3,
-      "taken": 0,
-      "rated": 0,
-      "rating": 0,
+      "taken": 1,
+      "rated": 1,
+      "rating": 5,
       "data": {
         "questions": [
           {

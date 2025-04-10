@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { useBeforeUnload, useBlocker } from "react-router-dom";
+import { useState } from "react"
+import { useBeforeUnload, useBlocker } from "react-router-dom"
 
 /*
-custom hook for preventing navigating away from current location if dirty flag is set
-returns [ isDirty, setDirty(), setClean() ]
+	Custom hook for preventing navigating away from current location if dirty flag is set.
 */
 
 export default function useUnsavedChanges(prompt) {
 	const [isDirty, setIsDirty] = useState(false);
+
 	const handleBeforeUnload = (event) => {
 		if (isDirty) {
 			if ( event.preventDefault) { // beforeUnload event
@@ -18,6 +18,8 @@ export default function useUnsavedChanges(prompt) {
 		}
 		return false;
 	};
+
+	// set blockers for reload and navigating
 	useBeforeUnload(handleBeforeUnload);
 	useBlocker(handleBeforeUnload);
 	return [ isDirty, ()=>{setIsDirty(true)}, ()=>{setIsDirty(false)} ];

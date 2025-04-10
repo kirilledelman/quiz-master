@@ -1,5 +1,9 @@
-import {Link, useRouteError} from "react-router-dom";
-import Header from "../components/Header.jsx";
+import Header from "../components/Header.jsx"
+import {Link, useRouteError} from "react-router-dom"
+
+/*
+	Basic error page
+*/
 
 export default function ErrorPage() {
 	const routeError = useRouteError();

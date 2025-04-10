@@ -1,20 +1,23 @@
-import { createHashRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./pages/RootLayout";
-import HomePage from "./pages/HomePage";
-import NewUserPage from "./pages/NewUserPage";
-import LogInPage from "./pages/LogInPage";
-import ErrorPage from "./pages/ErrorPage";
-import UserEditPage, { action as updateUserAction } from "./pages/UserEditPage.jsx";
+import useAppLoader from "./hooks/useAppLoader"
+import { authOnlyLoader } from "./util/common"
+import LoadingSpinner from "./components/LoadingSpinner"
+import RootLayout from "./pages/RootLayout"
+import HomePage from "./pages/HomePage"
+import NewUserPage from "./pages/NewUserPage"
+import LogInPage from "./pages/LogInPage"
+import ErrorPage from "./pages/ErrorPage"
+import UserEditPage, { updateUserAction } from "./pages/UserEditPage.jsx"
 import QuizzesPage from "./pages/QuizzesPage"
 import QuizEditPage, { quizLoader } from "./pages/QuizEditPage"
-import { authOnlyLoader } from "./util/common";
-import LoadingSpinner from "./components/LoadingSpinner";
-import useAppLoader from "./hooks/useAppLoader";
-import QuizPage from "./pages/QuizPage.jsx";
-import UserPage, { userLoader } from "./pages/UserPage.jsx";
-import QuizStatsPage, { statsLoader } from "./pages/QuizStatsPage.jsx";
-import LogOutPage from "./pages/LogOutPage.jsx";
+import QuizPage from "./pages/QuizPage.jsx"
+import UserPage, { userLoader } from "./pages/UserPage.jsx"
+import QuizStatsPage, { statsLoader } from "./pages/QuizStatsPage.jsx"
+import LogOutPage from "./pages/LogOutPage.jsx"
+import { createHashRouter, RouterProvider } from "react-router-dom"
 
+/*
+    Main router definition
+*/
 const router = createHashRouter([
     { path: '/', element: <RootLayout />, errorElement: <ErrorPage />,
     children: [
@@ -36,6 +39,11 @@ const router = createHashRouter([
         ]}
     ]},
 ] );
+
+/*
+    App root
+    tries to log in if token is saved, then displays the router
+*/
 
 export default function App() {
     const loading = useAppLoader();

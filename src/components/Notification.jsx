@@ -1,8 +1,13 @@
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {uiActions} from "../store/ui.js";
-import styles from "./Notification.module.scss";
-import Icon from "./Icon.jsx";
+import styles from "./Notification.module.scss"
+import Icon from "./Icon.jsx"
+import {useEffect, useState} from "react"
+import {useDispatch, useSelector} from "react-redux"
+import {uiActions} from "../store/ui.js"
+
+/*
+	Pop-up notification shown at the bottom of the screen
+*/
+
 
 // default notification duration
 const showDuration = 3000;
@@ -35,7 +40,6 @@ export default function Notification() {
 		return ()=>{ clearInterval(interval); clearInterval(hideInterval) };
 	}, [text, counter, dispatch]);
 
-	// output
 	return (
 		<div className={styles.notification + ' ' + (show ? styles.show : '') }>
 			<div className={styles.wrapper}>

@@ -9,9 +9,7 @@
     align-self: stretch;
     
     @media screen and (max-width: 600px) {
-      & {
-        justify-content: space-between;
-      }
+      & { justify-content: space-between; }
     }
   }
 }

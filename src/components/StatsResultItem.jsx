@@ -1,9 +1,12 @@
-import styles from './StatsResultItem.module.scss';
-import { Link } from "react-router-dom";
-import { formatTimestamp } from "../util/common.js";
+import styles from './StatsResultItem.module.scss'
+import { formatTimestamp } from "../util/common.js"
+import { Link } from "react-router-dom"
+
+/*
+	Item shown on quiz stats page, with information when quiz was taken by a user, score, and rating
+*/
 
 export default function StatsResultItem ({ item }) {
-
 	const rating = item.result >= 100 ? 3 : item.result >= 75 ? 2 : item.result > 25 ? 1 : 0,
 		ratingClassName = styles[(['bad','ok','great','excellent'][rating])];
 

@@ -12,13 +12,9 @@
     display: flex;
     flex-direction: column;
 
-    span:last-child {
-      font-size: 75%;
-    }
+    span:last-child { font-size: 75% }
 
-    &.name {
-      flex: 1;
-    }
+    &.name { flex: 1; }
 
     &.time {
       width: 7rem;
@@ -29,23 +25,15 @@
       align-items: end;
       width: 4rem;
 
-      span:first-child {
-        font-weight: bold;
-      }
+      span:first-child { font-weight: bold }
     }
   }
 
-  .bad {
-    color: var(--alert-color);
-  }
+  .bad { color: var(--alert-color) }
 
-  .ok {
-    color: var(--link-color);
-  }
+  .ok { color: var(--link-color) }
 
-  .great {
-    color: var(--positive-color);
-  }
+  .great { color: var(--positive-color) }
 
   .excellent {
     background: var(--positive-color);

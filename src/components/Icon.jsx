@@ -1,4 +1,10 @@
-import styles from './Icon.module.scss';
+import styles from './Icon.module.scss'
+
+/*
+	SVG based icon used throughout the site
+	Actual SVG borrowed from Google Polymer's icon set
+	https://kevingleason.me/Polymer-Todo/bower_components/iron-icons/demo/index.html
+*/
 
 const _icons = {
 	'logo': <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>,
@@ -24,11 +30,12 @@ const _icons = {
 	</g>)
 };
 
-export default function Icon({icon, mode='', className='', tooltip, ...rest}) {
+export default function Icon({icon, mode='', className='', title, ...rest}) {
 	const modes = mode.split(/\s+/).reduce((a, c) => a + ' ' + (styles[c] || ''), ''),
 		  classNames = styles.Icon + ' ' + (modes) + ' ' + className;
+
 	return <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" className={classNames} {...rest}>
-		{ tooltip && <title>{tooltip}</title> }
+		{ title && <title>{title}</title> }
 		{_icons[icon] || <g/>}
 	</svg>
 }

@@ -19,9 +19,7 @@
       word-break: break-word;
     }
 
-    .created {
-      font-size: 90%;
-    }
+    .created { font-size: 90%; }
 
     .about {
       border-top: 0.1rem solid var(--bg-color);
@@ -30,19 +28,15 @@
       white-space: pre;
       align-self: stretch;
 
-      &:empty { display: none; }
+      &:empty { display: none }
     }
   }
 
-  .tabs {
-    display: flex;
-  }
+  .tabs { display: flex }
 
   @media screen and (max-width: 600px) {
-    .card {
-      flex-direction: column;
-    }
-    .tabs { justify-content: space-between; }
+    .card { flex-direction: column }
+    .tabs { justify-content: space-between }
   }
 
   .note {
@@ -57,16 +51,13 @@
     text-align: center;
     padding-top: 2rem;
 
-    a {
-      justify-self: center;
-    }
+    a { justify-self: center }
   }
 
   .quizList {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
   }
 
   .resultList {

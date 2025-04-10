@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react"
 
 /*
-custom hook for infinite load implementation
-returns [ loading, setLoading ]
+	Custom hook for "infinite load" implementation on Quizzes Page
 */
 
 export default function useInfiniteScroll(url, callback, config = { method: "GET" }) {
@@ -10,14 +9,19 @@ export default function useInfiniteScroll(url, callback, config = { method: "GET
 
 	// sets loading flag when scrolled to the bottom
 	const handleScroll = useCallback(()=> {
-		if ( !url || loading || Math.floor(window.innerHeight + document.documentElement.scrollTop) < Math.floor(document.documentElement.offsetHeight)) return;
+		const distToBottom = Math.floor(document.documentElement.offsetHeight) - Math.floor(window.innerHeight + document.documentElement.scrollTop);
+		if ( !url || loading || distToBottom > 8) return;
 		setLoading(true);
 	},[url, loading] );
 
 	// registers scroll event listener
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
+		window.addEventListener('wheel', handleScroll);
+		return () => {
+			window.removeEventListener('wheel', handleScroll);
+			window.removeEventListener('scroll', handleScroll);
+		}
 	}, [handleScroll]);
 
 	// actual load function

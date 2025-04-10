@@ -1,9 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { backendUrl, getAuthHeader } from "../util/common";
-import { userActions } from "../store/user";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { backendUrl, getAuthHeader } from "../util/common"
+import { userActions } from "../store/user"
+import { useEffect, useState } from "react"
 
-// logs user in if there's auth token stored in localStorage
+/*
+	Custom hook used at App level that logs user in if there's auth token stored in localStorage
+*/
+
 export default function useAppLoader() {
 	const dispatch = useDispatch(),
 		user = useSelector((state) => state.user.user),

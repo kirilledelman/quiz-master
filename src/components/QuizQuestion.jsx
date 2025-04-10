@@ -1,6 +1,10 @@
-import { useCallback } from "react";
-import InputField from "./InputField.jsx";
-import styles from './QuizQuestion.module.scss';
+import styles from './QuizQuestion.module.scss'
+import InputField from "./InputField.jsx"
+import { useCallback } from "react"
+
+/*
+	Quiz question component displayed when taking a quiz
+*/
 
 export default function QuizQuestion({ question, answer, onChange }) {
 	const setCorrect = useCallback((e, nth) => {
@@ -16,6 +20,7 @@ export default function QuizQuestion({ question, answer, onChange }) {
 			{question.title && (<h3>{question.title}</h3>)}
 			<p>{question.text}</p>
 		</div>
+
 		{ (question.type === "choice" || question.type === 'multiple') &&
 			(<ul className={styles.choices}>
 				{ question.choices.map( (choice, index) =>{
@@ -29,6 +34,7 @@ export default function QuizQuestion({ question, answer, onChange }) {
 					</li>)
 				})}
 			</ul>) }
+
 		<div className={styles.tip}>{ {
 			multiple:"Check all that apply to continue",
 			choice: "Select answer to continue" }[question.type] }</div>

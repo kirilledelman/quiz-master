@@ -1,5 +1,4 @@
 .QuizSummaryBreakdownItem {
-
   list-style-type: decimal;
   margin: 0.5rem 0 0.75rem;
 
@@ -55,17 +54,9 @@
     }
   }
 
+  .incorrect { color: var(--alert-color) }
 
-  .incorrect {
-    color: var(--alert-color);
-  }
+  .partial { color: var(--link-color) }
 
-  .partial {
-    color: var(--link-color);
-  }
-
-  .correct {
-    color: var(--positive-color);
-  }
-
+  .correct { color: var(--positive-color) }
 }

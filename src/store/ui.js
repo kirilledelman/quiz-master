@@ -1,6 +1,9 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit"
 
-// manages state related to ui
+/*
+	Manages state related to user interface
+*/
+
 const uiSlice = createSlice({
 	name: "ui",
 	initialState: {

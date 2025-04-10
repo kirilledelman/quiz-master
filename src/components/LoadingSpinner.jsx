@@ -1,6 +1,9 @@
-import styles from "./LoadingSpinner.module.scss";
+import styles from "./LoadingSpinner.module.scss"
 
-/* basic three moving dots loading spinner */
+/*
+	Basic three moving dots loading spinner
+	https://github.com/n3r4zzurr0/svg-spinners?tab=readme-ov-file
+*/
 
 export default function LoadingSpinner() {
 	return (<svg className={styles.loadingSpinner} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

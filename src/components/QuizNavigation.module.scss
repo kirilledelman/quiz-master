@@ -44,9 +44,7 @@
     }
 
     &.completed {
-      .fill {
-        background: var(--bg-color);
-      }
+      .fill { background: var(--bg-color) }
     }
   }
 
@@ -62,16 +60,13 @@
     z-index: 2;
     margin: 0 0.5rem;
 
-    &:nth-child(2) {
-      margin-left: 0;
-    }
+    &:nth-child(2) { margin-left: 0 }
 
-    &:last-child {
-      margin-right: 0;
-    }
+    &:last-child { margin-right: 0 }
 
     &[disabled] {
       background: var(--sub-sub-bg-color);
+
       &.completed {
         background: var(--bg-color);
         color: var(--link-color);

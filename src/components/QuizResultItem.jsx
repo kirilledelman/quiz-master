@@ -1,9 +1,12 @@
-import styles from './QuizResultItem.module.scss';
-import { Link } from "react-router-dom";
-import { formatTimestamp } from "../util/common.js";
+import styles from './QuizResultItem.module.scss'
+import { Link } from "react-router-dom"
+import { formatTimestamp } from "../util/common.js"
+
+/*
+	Quiz taking result item displayed on User Page, under "Quizzes Taken" tab
+*/
 
 export default function QuizResultItem ({ item }) {
-
 	const rating = item.highestResult >= 100 ? 3 : item.highestResult >= 75 ? 2 : item.highestResult > 25 ? 1 : 0;
 
 	return (<li className={styles.QuizResultItem}>

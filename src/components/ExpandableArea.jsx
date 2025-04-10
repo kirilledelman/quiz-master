@@ -1,6 +1,10 @@
-import { useState } from "react";
-import styles from "./ExpandableArea.module.scss";
-import Icon from "./Icon.jsx";
+import styles from "./ExpandableArea.module.scss"
+import Icon from "./Icon.jsx"
+import { useState } from "react"
+
+/*
+Collapsible header, displaying its children when expanded
+*/
 
 export default function ExpandableArea({title, children}) {
 	const [expanded, setExpanded] = useState(false);

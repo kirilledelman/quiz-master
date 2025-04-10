@@ -33,17 +33,11 @@
     }
   }
 
-  .bad {
-    color: var(--alert-color);
-  }
+  .bad { color: var(--alert-color) }
 
-  .ok {
-    color: var(--link-color);
-  }
+  .ok { color: var(--link-color) }
 
-  .great {
-    color: var(--positive-color);
-  }
+  .great { color: var(--positive-color) }
 
   .excellent {
     background: var(--positive-color);

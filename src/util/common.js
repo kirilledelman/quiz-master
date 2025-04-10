@@ -1,10 +1,8 @@
-import { redirect } from "react-router-dom";
+import { redirect } from "react-router-dom"
 
-export function isTouchDevice() {
-	return (('ontouchstart' in window) ||
-		(navigator.maxTouchPoints > 0) ||
-		(navigator.msMaxTouchPoints > 0));
-}
+/*
+	Common util functions
+*/
 
 const dateFormatter = Intl.DateTimeFormat( 'en-US');
 

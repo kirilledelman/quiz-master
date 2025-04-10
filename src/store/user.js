@@ -1,6 +1,9 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit"
 
-// manages user authentication state
+/*
+	Manages user authentication state
+*/
+
 const userSlice = createSlice({
 	name: "user",
 	initialState: {
